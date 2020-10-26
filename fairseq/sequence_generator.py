@@ -212,6 +212,7 @@ class SequenceGenerator(nn.Module):
         # Note that src_tokens may have more than 2 dimenions (i.e. audio features)
         bsz, src_len = src_tokens.size()[:2]
         beam_size = self.beam_size
+        prefix_tokens = prefix_tokens[:bsz, ]
 
         if constraints is not None and not self.search.supports_constraints:
             raise NotImplementedError(
